@@ -1,9 +1,9 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Navbar from "../Navbar";
-import ResponsiveVideo from "../../../Common/ResponsiveVideo";
-import Image from "next/image";
-import { Data } from "../../../../JSON/Data";
+import React from 'react';
+import { useRouter } from 'next/router';
+import Navbar from '../Navbar';
+import ResponsiveVideo from '../../../Common/ResponsiveVideo';
+import Image from 'next/image';
+import { Data } from '../../../../JSON/Data';
 
 const Index: React.FC = () => {
   const Router = useRouter();

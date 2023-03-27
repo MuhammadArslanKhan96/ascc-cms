@@ -1,15 +1,15 @@
-import React from "react";
-import { Data } from "../../../JSON/Data";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import { Data } from '../../../JSON/Data';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function Navbar() {
   const Router = useRouter();
 
   const Path = (Name: string) => {
-    if (Name === "BRANDING") return Router.query.branding;
-    else if (Name === "EDITORIAL") return Router.query.editorial;
-    else if (Name === "ADVERTISING") return Router.query.advertising;
+    if (Name === 'BRANDING') return Router.query.branding;
+    else if (Name === 'EDITORIAL') return Router.query.editorial;
+    else if (Name === 'ADVERTISING') return Router.query.advertising;
   };
 
   return (
@@ -21,8 +21,8 @@ function Navbar() {
             href={item.Route}
             className={`font-Grotesque md:text-[13px] text-[11px] md:leading-[45px] leading-[20px] tracking-[5%] Custom-Hover-Cursor ${
               Router.pathname === item.Route || Path(item.Name)
-                ? "text-black font-normal"
-                : "text-offGray font-[200]"
+                ? 'text-black font-normal'
+                : 'text-offGray font-[200]'
             } uppercase text-start`}
           >
             {item.Name}

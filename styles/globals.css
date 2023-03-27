@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  cursor: url("/cursor.svg"), auto;
+  cursor: url('/cursor.svg'), auto;
   background-color: #f2f2f2;
   min-height: -webkit-fill-available;
 }
@@ -20,6 +20,47 @@ body {
 }
 .drawers {
   display: block;
+}
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: black;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -10%;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.slideUp {
+  opacity: 0;
+}
+
+.slideUp {
+  animation: slideUp ease-in-out 0.4s forwards 0.8s;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(1);
+    opacity: 1;
+  }
 }
 
 .drawers-main {
@@ -33,11 +74,11 @@ body {
 }
 .Detail-Link:hover img {
   transform: scale(1);
-  cursor: url("/cursorWhite.svg"), auto;
+  cursor: url('/cursorWhite.svg'), auto;
   transition: all 0.5s ease !important;
 }
 .Custom-Hover-Cursor {
-  cursor: url("/cursorWhite.svg"), auto !important;
+  cursor: url('/cursorWhite.svg'), auto !important;
 }
 .DeactiveImage {
   opacity: 0;
@@ -85,20 +126,18 @@ body {
   }
 }
 
-
-.timer{
-  display: flex; 
-  padding-bottom: 2.75rem; 
-  justify-content: space-between; 
-  align-items: center; 
-  width: 100%; 
+.timer {
+  display: flex;
+  padding-bottom: 2.75rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   gap: 1.25rem;
-
 }
-  @media (min-width: 768px) {
-    .timer{
-    padding-bottom: 0; 
-    justify-content: flex-start; 
+@media (min-width: 768px) {
+  .timer {
+    padding-bottom: 0;
+    justify-content: flex-start;
     width: auto;
-    }
   }
+}

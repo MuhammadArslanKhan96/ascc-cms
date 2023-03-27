@@ -1,24 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Navbar from "../Navbar";
-import Image from "next/image";
-import { Data } from "../../../../JSON/Data";
-import SVG from "../../../../SVG/SVG";
-import { useRouter } from "next/router";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import React, { useState, useRef, useEffect } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Navbar from '../Navbar';
+import Image from 'next/image';
+import { Data } from '../../../../JSON/Data';
+import SVG from '../../../../SVG/SVG';
+import { useRouter } from 'next/router';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function Details() {
   const Router = useRouter();
   const [SliderLength, SetSliderLength] = useState<any>([]);
-  const [Title, setTitle] = useState<any>("");
+  const [Title, setTitle] = useState<any>('');
 
   const SetProjectTitle = () => {
     if (Router.query.editorial) setTitle(Router.query.editorial);
     else {
-      Router.push("/creative/work/editorial");
+      Router.push('/creative/work/editorial');
     }
   };
 
@@ -27,16 +27,16 @@ function Details() {
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       console.log(event.key);
-      if (event.key === "ArrowRight") {
+      if (event.key === 'ArrowRight') {
         SliderRef.current.onClickNext();
       }
-      if (event.key === "ArrowLeft") {
+      if (event.key === 'ArrowLeft') {
         SliderRef.current.onClickPrev();
       }
     };
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -45,15 +45,15 @@ function Details() {
     SetProjectTitle();
   }, []);
 
-  const [CheckPhone, SetCheckPhone] = useState("");
+  const [CheckPhone, SetCheckPhone] = useState('');
 
   useEffect(() => {
-    if (typeof window.orientation !== "undefined") {
-      SetCheckPhone("Phone");
-      console.log("Phone");
+    if (typeof window.orientation !== 'undefined') {
+      SetCheckPhone('Phone');
+      console.log('Phone');
     } else {
-      SetCheckPhone("Desktop");
-      console.log("Desktop");
+      SetCheckPhone('Desktop');
+      console.log('Desktop');
     }
   }, [Router]);
 
@@ -73,9 +73,9 @@ function Details() {
   return (
     <div
       className={`w-full md:h-[calc(100vh-100px)] ${
-        CheckPhone === "Phone"
-          ? "h-[calc(100vh-54px)]"
-          : "h-[calc(100vh-54px)]"
+        CheckPhone === 'Phone'
+          ? 'h-[calc(100vh-145px)]'
+          : 'h-[calc(100vh-54px)]'
       } md:overflow-hidden bg-OffWhite`}
     >
       <Navbar />
@@ -108,7 +108,7 @@ function Details() {
                   muted
                   controls={true}
                 >
-                  <source src={slide.IMG} type={"video/mp4"} />
+                  <source src={slide.IMG} type={'video/mp4'} />
                 </video>
               </div>
             ) : (
@@ -116,7 +116,7 @@ function Details() {
                 key={index}
                 src={slide.IMG}
                 alt=""
-                className="object-contain w-full h-full px-1"
+                className="object-contain w-full h-full px-1 "
               />
             );
           })}
@@ -133,7 +133,7 @@ function Details() {
           </button>
           <div className="md:w-[56px] w-[25px] md:mx-0 mx-[26px] flex justify-center items-center">
             <p className="font-Eurostile font-normal md:text-[14px] text-[10px] text-Gray md:leading-[60px] leading-[45px] tracking-[5%]">
-              {current + 1 + "/" + SliderLength?.length}
+              {current + 1 + '/' + SliderLength?.length}
             </p>
           </div>
           <button

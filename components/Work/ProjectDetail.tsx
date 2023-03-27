@@ -1,22 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Navbar from '../Navbar';
-import { Data } from '../../../../JSON/Data';
-import SVG from '../../../../SVG/SVG';
+import Navbar from './Navbar';
+import SVG from "../../SVG/SVG";
 import { useRouter } from 'next/router';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+interface Props {
+  projectDetail: any;
+  slug: string;
+}
+const Details: React.FC<Props> = ({ projectDetail,slug }: Props) => {
 
-function Details() {
   const Router = useRouter();
   const SliderRef = useRef<any>();
-  const [SliderLength, SetSliderLength] = useState<any>([]);
   const [CheckPhone, SetCheckPhone] = useState('');
-
+  const SliderLength = projectDetail.caseStudies;
   const [Title, setTitle] = useState<any>('');
 
   const SetProjectTitle = () => {
-    if (Router.query.advertising) setTitle(Router.query.advertising);
-    else Router.push('/creative/work/advertising');
+    if (Router.query.work) setTitle(Router.query.work);
+    else Router.push(`/work/${slug}`);
   };
 
   useEffect(() => {
@@ -35,7 +37,7 @@ function Details() {
   }, []);
 
   useEffect(() => {
-    SetSliderLength(Data.Creative.Advertising[0].Project);
+    
     SetProjectTitle();
   }, []);
 
@@ -99,13 +101,13 @@ function Details() {
                   muted
                   controls={true}
                 >
-                  <source src={slide.IMG} type={'video/mp4'} />
+                  <source src={slide.video} type={'video/mp4'} />
                 </video>
               </div>
             ) : (
               <img
                 key={index}
-                src={slide.IMG}
+                src={slide.image}
                 alt=""
                 className="object-contain w-full h-full px-1 "
               />

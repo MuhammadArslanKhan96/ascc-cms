@@ -1,25 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import TimerWidget from "../../Common/TimerTeller/TimerWidget";
-import { Slide, Zoom, Fade } from "react-awesome-reveal";
-import HoverImage from "./FadeAnimation/IMG";
-import SVG from "../../../SVG/SVG";
-import About from "../../Creative/TheAgency/Index";
+import axios from 'axios';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import TimerWidget from '../../Common/TimerTeller/TimerWidget';
+import { Slide, Zoom, Fade } from 'react-awesome-reveal';
+import HoverImage from './FadeAnimation/IMG';
+import SVG from '../../../SVG/SVG';
+import About from '../../Creative/TheAgency/Index';
 
 // import component 👇
-import Drawer from "react-modern-drawer";
+import Drawer from 'react-modern-drawer';
 //import styles 👇
-import "react-modern-drawer/dist/index.css";
-import { Data } from "../../../JSON/Data";
-import { motion } from "framer-motion";
+import 'react-modern-drawer/dist/index.css';
+import { Data } from '../../../JSON/Data';
+import { motion } from 'framer-motion';
 
 const Navigation: React.FC = () => {
   const Router = useRouter();
-  const [CheckPhone, SetCheckPhone] = useState("");
+  const [CheckPhone, SetCheckPhone] = useState('');
   const [OpenCreative, setOpenCreative] = React.useState(false);
   const [OpenArtists, setOpenArtists] = React.useState(false);
+  const [leftMenu, setLeftMenu] = React.useState([]);
+  const [rightMenu, setRightMenu] = React.useState([]);
+  const [globalInfo, setGlobalInfo] = React.useState([]);
   const toggleCreativeDrawer = () => {
     setOpenCreative((prevState) => !prevState);
   };
@@ -28,18 +32,18 @@ const Navigation: React.FC = () => {
     setOpenArtists((prevState) => !prevState);
   };
   const ShowLogo = () => {
-    if (Router.pathname === "/" || Router.query.ProjectName) return false;
+    if (Router.pathname === '/' || Router.query.work) return false;
     else return true;
   };
   const CreativeActive = () => {
     if (
-      Router.pathname === "/creative/agency" ||
-      Router.pathname === "/creative/work" ||
-      Router.pathname === "/creative/clients" ||
-      Router.pathname === "/creative/work/editorial" ||
-      Router.pathname === "/creative/work/motion" ||
-      Router.pathname === "/creative/work/advertising" ||
-      Router.pathname === "/creative/work/branding" ||
+      Router.pathname === '/creative/agency' ||
+      Router.pathname === '/creative/work' ||
+      Router.pathname === '/creative/clients' ||
+      Router.pathname === '/creative/work/editorial' ||
+      Router.pathname === '/creative/work/motion' ||
+      Router.pathname === '/creative/work/advertising' ||
+      Router.pathname === '/creative/work/branding' ||
       Router.query.editorial ||
       Router.query.advertising ||
       Router.query.branding
@@ -48,14 +52,14 @@ const Navigation: React.FC = () => {
     else return false;
   };
   const ArtistActive = () => {
-    if (Router.query.artist || Router.query.ProjectName) return true;
+    if (Router.query.artist || Router.query.work) return true;
     else return false;
   };
 
   const [Show, setShow] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const controlNavbar = () => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       if (window.scrollY < lastScrollY) {
         setShow(false);
       } else {
@@ -70,18 +74,18 @@ const Navigation: React.FC = () => {
       OpenAbout ||
       OpenCreative ||
       OpenArtists ||
-      Router.pathname === "/" ||
+      Router.pathname === '/' ||
       Router.query.editorial ||
       Router.query.advertising ||
       Router.query.branding ||
-      Router.query.ProjectName
+      Router.query.work
     )
-      document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+      document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'auto';
 
     return () => {
       // 👇️ optionally remove styles when component unmounts
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     };
 
     // if (typeof window !== "undefined") {
@@ -93,9 +97,9 @@ const Navigation: React.FC = () => {
   });
 
   useEffect(() => {
-    if (typeof window.orientation !== "undefined") {
-      SetCheckPhone("Phone");
-    } else SetCheckPhone("Desktop");
+    if (typeof window.orientation !== 'undefined') {
+      SetCheckPhone('Phone');
+    } else SetCheckPhone('Desktop');
   }, [OpenCreative]);
 
   const [OpenAbout, setOpenAbout] = React.useState(false);
@@ -106,38 +110,73 @@ const Navigation: React.FC = () => {
   const [ActiveImageIndexForCreative, SetCreativeIndex] = useState<number>(0);
   const [ActiveImageIndexForArtist, SetArtistIndex] = useState<number>(0);
 
+  useEffect(() => {}, [OpenAbout, OpenCreative, OpenArtists, Router]);
+  const getLeftMenu = async () =>{
+    const request = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/leftmenu.json`)
+    .then((response)=>{
+      //console.log(response);
+      setLeftMenu(response.data.data[0].leftmenu);
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+    return request;
+  };
+  const getRightMenu = async () =>{
+    const request = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/rightmenu.json`)
+    .then((response)=>{
+      
+      setRightMenu(response.data.data[0].rightmenu);
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+    return request;
+  };
+  const getGlobalInfo = async () =>{
+    const request = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/global.json`)
+    .then((response)=>{
+      //console.log(response);
+      setGlobalInfo(response.data.data[0]);
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+    return request;
+  };
   useEffect(() => {
-
-  }, [OpenAbout, OpenCreative, OpenArtists, Router]);
-
+    getLeftMenu(); 
+    getRightMenu();
+    getGlobalInfo();
+  }, []);
   return (
     <React.Fragment>
       <div
         className={`iphone-area w-full bg-OffWhite md:h-[100px] h-[54px] md:px-10 px-4 md:py-7 ${
-          Router.query.ProjectName ? "md:flex hidden" : "flex"
+          Router.query.work ? 'md:flex hidden' : 'flex'
         } justify-between items-center sticky top-0 z-10 transition-all duration-500 ease-linear`}
       >
         <button
           onClick={toggleCreativeDrawer}
           className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] leading-[11.04px] tracking-[5%] uppercase ${
-            CreativeActive() ? "after:w-full" : "after:w-0"
-          } inline-block text-black after:content-[''] after:block after:h-[2px] after:bg-black after:transition-all after:duration-150 hover:after:w-full Custom-Hover-Cursor`}
+            CreativeActive() ? 'after:w-full' : ''
+          } hover-underline-animation`}
         >
           CREATIVE
         </button>
         {ShowLogo() && (
           <Link
             className=" Custom-Hover-Cursor relative md:w-[80px] w-[48px] md:h-[80px] h-[48px] "
-            href={"/"}
+            href={'/'}
           >
-            <Image src={"/logo.gif"} alt="logo" fill />
+            <Image src={'/logo.gif'} alt="logo" fill />
           </Link>
         )}
         <button
           onClick={toggleArtistsDrawer}
           className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] leading-[11.04px] tracking-[5%] uppercase ${
-            ArtistActive() ? "after:w-full" : "after:w-0"
-          } inline-block text-black after:content-[''] after:block after:h-[2px] after:bg-black after:transition-all after:duration-150 hover:after:w-full Custom-Hover-Cursor`}
+            ArtistActive() ? 'after:w-full' : ''
+          } hover-underline-animation`}
         >
           ARTISTS
         </button>
@@ -151,6 +190,7 @@ const Navigation: React.FC = () => {
           enableOverlay={false}
           direction="left"
           className="drawers-main bg-OffWhite"
+          duration={1000}
         >
           <div className="w-full h-full flex justify-start item-center flex-col bg-OffWhite">
             {/* Cross Bar */}
@@ -159,7 +199,7 @@ const Navigation: React.FC = () => {
             >
               <button
                 onClick={toggleCreativeDrawer}
-                className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] tracking-[5%] uppercase inline-block text-black after:content-[''] after:block after:h-[2px] after:bg-black after:transition-all after:duration-150 hover:after:w-full Custom-Hover-Cursor`}
+                className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] tracking-[5%] uppercase inline-block text-black after:content-[''] after:block after:h-[1px] after:bg-black after:transition-all after:duration-150 hover:after:w-full Custom-Hover-Cursor`}
               >
                 CREATIVE
               </button>
@@ -172,14 +212,14 @@ const Navigation: React.FC = () => {
             </div>
             <div
               className={`w-full md:h-[calc(100vh-100px)] ${
-                CheckPhone === "Phone"
-                  ? "h-[calc(100vh-54px)]"
-                  : "h-[calc(100vh-54px)]"
+                CheckPhone === 'Phone'
+                  ? 'h-[calc(100vh-160px)]'
+                  : 'h-[calc(100vh-54px)]'
               } flex justify-between items-start flex-col md:px-10 px-4 pb-0 md:pb-7`}
             >
-              <div className="w-full flex justify-start items-start flex-col md:gap-6 gap-[18px] pt-2 mt-8">
-                {Data.Creative.NavItems.map((item: any, index: number) => {
-                  return item.Name === "About" ? (
+              <div className="w-full flex justify-start items-start flex-col md:gap-6 gap-[18px] pt-2">
+                {leftMenu?.map((item: any, index: number) => {
+                  return item.title === 'About' ? (
                     <Slide
                       direction="up"
                       className="overflow-hidden"
@@ -191,9 +231,9 @@ const Navigation: React.FC = () => {
                           setOpenAbout(true);
                         }}
                         onMouseOver={() => SetCreativeIndex(index)}
-                        className="font-Eurostile font-[700] md:text-[25px] text-[16px] leading-[16px] tracking-[-2%] text-black uppercase pt-2 text-start Custom-Hover-Cursor"
+                        className="font-Eurostile font-[700] md:text-[25px] text-[16px] leading-[16px] tracking-[-2%] hover:text-gray-500 text-black ease-in-out uppercase pt-2 text-start Custom-Hover-Cursor"
                       >
-                        {item.Name}
+                        {item.title}
                       </button>
                     </Slide>
                   ) : (
@@ -205,17 +245,19 @@ const Navigation: React.FC = () => {
                       <Link
                         onClick={toggleCreativeDrawer}
                         onMouseOver={() => SetCreativeIndex(index)}
-                        href={item.Route}
-                        className="font-Eurostile font-[700] md:text-[25px] text-[16px] leading-[16px] tracking-[-2%] text-black uppercase text-start Custom-Hover-Cursor"
+                        href={item.url}
+                        className="hover:text-gray-500 text-black ease-in-out font-Eurostile font-[700] md:text-[25px] text-[16px] leading-[16px] tracking-[-2%] uppercase text-start Custom-Hover-Cursor"
                       >
-                        {item.Name}
+                        {item.title}
                       </Link>
                     </Slide>
                   );
                 })}
               </div>
               <div
-                className={ `${CheckPhone === "Phone" ? "pb-7" : "pb-0"} w-full md:h-[40px] h-[50px] flex items-center mt-3 md:mt-0 md:items-start flex-col`}
+                className={`${
+                  CheckPhone === 'Phone' ? 'pb-7' : 'pb-0'
+                } w-full md:h-[40px] h-[50px] flex items-center mt-3 md:mt-0 md:items-start flex-col`}
               >
                 <TimerWidget />
               </div>
@@ -227,15 +269,16 @@ const Navigation: React.FC = () => {
           onClose={toggleCreativeDrawer}
           enableOverlay={false}
           direction="right"
-          style={{ width: "50%", height: "100vh" }}
+          duration={1000}
+          style={{ width: '50%', height: '100vh' }}
           className="drawers-main drawers overflow-hidden bg-OffWhite"
         >
           <div className="w-full h-full">
-            {Data.Creative.NavItems.map((item: any, index: number) => {
+            {leftMenu?.map((item: any, index: number) => {
               return (
                 <Image
                   key={index}
-                  src={item.hover}
+                  src={item.rightImage[0].url}
                   alt=""
                   fill
                   className={`object-cover ${
@@ -255,7 +298,7 @@ const Navigation: React.FC = () => {
                   setOpenCreative(false);
                   setOpenArtists(true);
                 }}
-                className={`font-Eurostile font-[400] md:text-[20px] text-[16px] leading-[18.4px] tracking-[5%] uppercase inline-block text-OffWhite after:content-[''] after:block after:h-[2px] after:bg-OffWhite after:transition-all after:duration-150 after:w-0 hover:after:w-full Custom-Hover-Cursor`}
+                className={` font-Eurostile font-[400] md:text-[20px] text-[16px] leading-[18.4px] tracking-[5%] uppercase inline-block text-OffWhite after:content-[''] after:block after:h-[1px] after:bg-OffWhite after:transition-all after:duration-150 after:w-0 hover:after:w-full Custom-Hover-Cursor`}
               >
                 ARTISTS
               </button>
@@ -267,6 +310,7 @@ const Navigation: React.FC = () => {
       {/* Artist hamburger */}
       <div className="w-full bg-OffWhite">
         <Drawer
+          duration={1000}
           open={OpenArtists}
           onClose={toggleArtistsDrawer}
           enableOverlay={false}
@@ -274,11 +318,11 @@ const Navigation: React.FC = () => {
           className="drawers-main drawers"
         >
           <div className="w-full h-full flex justify-center item-center nav-image">
-            {Data.Artist.NavItems.map((item: any, index: number) => {
+            {rightMenu?.map((item: any, index: number) => {
               return (
                 <Image
                   key={index}
-                  src={item.hover}
+                  src={item.profileImage}
                   alt=""
                   fill
                   className={`object-cover ${
@@ -297,7 +341,7 @@ const Navigation: React.FC = () => {
                   setOpenArtists(false);
                   setOpenCreative(true);
                 }}
-                className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] tracking-[5%] uppercase inline-block text-OffWhite after:content-[''] after:block after:h-[2px] after:bg-OffWhite after:transition-all after:duration-150 after:w-0 hover:after:w-full Custom-Hover-Cursor`}
+                className={`font-Eurostile font-[400] md:text-[20px] text-[12px] md:leading-[18.4px] tracking-[5%] uppercase inline-block text-OffWhite after:content-[''] after:block after:h-[1px] after:bg-OffWhite after:transition-all after:duration-150 after:w-0 hover:after:w-full Custom-Hover-Cursor`}
               >
                 CREATIVE
               </button>
@@ -305,6 +349,7 @@ const Navigation: React.FC = () => {
           </div>
         </Drawer>
         <Drawer
+          duration={1000}
           open={OpenArtists}
           onClose={toggleArtistsDrawer}
           enableOverlay={false}
@@ -323,7 +368,7 @@ const Navigation: React.FC = () => {
             </button>
             <button
               onClick={toggleArtistsDrawer}
-              className={`font-Eurostile font-[400] md:text-[20px] text-[12px] leading-[18.4px] tracking-[5%] uppercase inline-block text-black after:content-[''] after:block after:h-[2px] after:bg-black after:transition-all after:duration-150 after:w-full Custom-Hover-Cursor`}
+              className={`font-Eurostile font-[400] md:text-[20px] text-[12px] leading-[18.4px] tracking-[5%] uppercase inline-block text-black after:content-[''] after:block after:h-[1px] after:bg-black after:transition-all after:duration-150 after:w-full Custom-Hover-Cursor`}
             >
               ARTISTS
             </button>
@@ -331,7 +376,7 @@ const Navigation: React.FC = () => {
           <div
             className={`w-full md:h-[calc(100vh-100px)] h-[calc(100vh-54px)] flex justify-start items-end flex-col md:px-10 px-4 pb-4 pt-2 md:gap-[20px] gap-[8px] bg-transparent`}
           >
-            {Data.Artist.NavItems.map((item: any, index: number) => {
+            {rightMenu?.map((item: any, index: number) => {
               return (
                 <div key={index} className="text-right">
                   <motion.h1
@@ -350,15 +395,15 @@ const Navigation: React.FC = () => {
                       onMouseOver={() => SetArtistIndex(index)}
                       // href={`${item.Route}?Title=${item.Title}`}
                       href={{
-                        pathname: `/artist/${item.Name}`,
-                        query: { Title: item.Title, Tab: "work" },
+                        pathname: `/artist/${item.slug}`,
+                        query: { Title: item.title, Tab: "work" },
                       }}
                       className="font-Eurostile font-[600] whitespace-nowrap md:text-[25px] text-[18px] leading-[20px] tracking-[-2%] text-black uppercase text-start Custom-Hover-Cursor"
                     >
-                      {item.Name}
+                      {item.title}
                     </Link>
                     <p className="font-Grotesque font-[300] md:text-[13px] text-[8px] md:leading-[20px] leading-[12px] tracking-[0.5%] text-black uppercase">
-                      {item.Title}
+                      {item.category}
                     </p>
                   </motion.h1>
                 </div>
@@ -374,6 +419,8 @@ const Navigation: React.FC = () => {
         Event={SetAbout}
         EventCreative={toggleCreativeDrawer}
         EventArtist={toggleArtistsDrawer}
+        content={leftMenu}
+        globalInfo={globalInfo}
       />
     </React.Fragment>
   );

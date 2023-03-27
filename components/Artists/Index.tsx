@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import BioTab from "./ArtistBio/Bio";
-import WorkTab from "./ArtistWork/Work";
-
-const Index: React.FC = () => {
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import BioTab from './ArtistBio/Bio';
+import WorkTab from './ArtistWork/Work';
+interface Props {
+  artist:any
+};
+const Index: React.FC<Props> = ({artist}: Props) => {
   const Router = useRouter();
   const ArtistDetails = Router.query;
   let Artist: string = ArtistDetails.artist?.toString() || "";
   let ArtistTitle: string = ArtistDetails.Title?.toString() || "";
   const Tab = ArtistDetails.Tab;
   const [ArtistWork, Set_ArtistWork] = useState(true);
-
+  //console.log(artist);
   useEffect(() => {
     if (Tab === "work") Set_ArtistWork(true);
     else Set_ArtistWork(false);
     localStorage.setItem("Artist", Artist);
     localStorage.setItem("Title", ArtistTitle);
   }, [Router]);
-
+ 
   return (
     <div
       className={`w-full md:h-[calc(100vh-100px)] bg-OffWhite md:overflow-hidden flex justify-center items-center flex-col`}
     >
       <div className="md:h-[65px] md:mt-0 mt-[32px]">
         <h1 className="font-Eurostile font-[700] md:text-[32px] text-[24px] md:leading-[45px] leading-[25px] tracking-[-2%] text-black uppercase text-center">
-          {Artist}
+          {artist.data[0].title}
         </h1>
         <div className="flex justify-center items-center md:gap-10 gap-4">
           <button
             onClick={() => Set_ArtistWork(true)}
             className={`font-Grotesque md:text-[13px] text-[11px] bg-transparent Custom-Hover-Cursor ${
-              ArtistWork ? "text-black md:font-normal" : "text-Gray font-[300]"
+              ArtistWork ? 'text-black md:font-normal' : 'text-Gray font-[300]'
             }  uppercase text-center`}
           >
             {ArtistDetails.Title}
@@ -40,7 +42,7 @@ const Index: React.FC = () => {
           <button
             onClick={() => Set_ArtistWork(false)}
             className={`font-Grotesque  md:text-[13px] text-[11px] leading-[20px] bg-transparent Custom-Hover-Cursor ${
-              !ArtistWork ? "text-black md:font-normal" : "text-Gray font-[300]"
+              !ArtistWork ? 'text-black md:font-normal' : 'text-Gray font-[300]'
             }  uppercase text-center`}
           >
             Bio
@@ -48,8 +50,8 @@ const Index: React.FC = () => {
         </div>
       </div>
       <div className="w-full md:h-[calc(100%-65px)] md:mt-0 mt-4">
-        {ArtistWork && <WorkTab />}
-        {!ArtistWork && <BioTab />}
+        {ArtistWork && <WorkTab work={artist.data[0].caseStudies} />}
+        {!ArtistWork && <BioTab bio={artist.data[0].bio} image={artist.data[0].profileImage} instagramUrl={artist.data[0].instagramURL} contactEmail={artist.data[0].contactemail}/>}
       </div>
     </div>
   );
