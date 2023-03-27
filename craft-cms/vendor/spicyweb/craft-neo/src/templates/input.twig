@@ -1,0 +1,35 @@
+{% set inputAttributes = {
+    id: id,
+    class: [
+        'neo-input',
+        "neo-input--#{handle}",
+        static ? 'is-static',
+        translatable ? 'is-translatable',
+    ],
+} %}
+
+{# Output the block type icons, for the non-Matrix new block styles #}
+{% if craft.app.plugins.getPlugin('neo').settings.newBlockMenuStyle != 'classic' %}
+    <div class="hidden">
+        {% for blockType in (blockTypes ?? [])|filter(bt => bt.iconId is not null) %}
+            {{ svg(blockType.icon)|attr({
+                id: "ni-icon-#{handle}-#{blockType.handle}",
+            }) }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<input type="hidden" name="{{ handle }}" value="">
+<div {{ attr(inputAttributes) }}>
+    <span aria-live="assertive" class="visually-hidden" data-status-message></span>
+    <div class="ni_blocks" data-neo="container.blocks">
+        {% for block in blocks %}
+            {% if block.level == 1 %}
+                {% include 'neo/block' with { handle, block, static } only %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% if not static %}
+        <div data-neo="container.buttons"></div>
+    {% endif %}
+</div>

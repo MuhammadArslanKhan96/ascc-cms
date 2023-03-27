@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: branding-phi
+primary: true
+siteGroup: 989905b9-eb5b-4bcb-815d-60d08fee093b # branding-phi
+sortOrder: 1

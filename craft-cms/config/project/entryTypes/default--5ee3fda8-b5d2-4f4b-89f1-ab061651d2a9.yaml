@@ -1,0 +1,133 @@
+fieldLayouts:
+  5e4becd9-d6f6-4b16-83f3-97b390a821d9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: Name
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 55689568-14f7-42d5-a4a6-4e54b5951b2e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2e89570b-7a3b-4588-b54a-8838796ec4a3 # Artist Title
+            instructions: null
+            label: Title
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 75df6c60-44c6-457b-8cb8-c9700ea16046
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 332929d1-d62c-4dec-a7d7-42809e27716d # Artist Instagram Url
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6f02a566-6535-49d9-b5e1-b323f6d339e3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e0981f4d-e17a-496c-b5eb-de30a26ceaf1 # Artist Contact Email
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f5834e3f-e6f7-448c-bdc6-3de88183d9b4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f7959d60-27d9-4445-a274-4ff265bfa9e6 # Artist Profile Image
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9e748e1e-a618-4ecb-927f-d16ea8933e47
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 22fda40d-cdb2-434e-bc40-a10529ba06fc # Bio
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: afb58c8a-2e26-4ace-aa25-af48875b750a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6cfc2aa8-a9db-4fa7-a040-008b79145b05 # Work Listing
+            instructions: null
+            label: 'Artist Work'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c1c733e9-d3e0-4d80-b005-e06ea0e77e73
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: bbd81800-80ec-4bdd-9e10-ae92baa75df1
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bde0d11b-0956-4e82-a8d7-a6ea1643030b # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 89c70c7b-1964-47e4-bd57-3710d54151c7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Seo
+        uid: a71b0fc0-a6bc-4b77-a42e-857523bb9dc8
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 756de6fa-238d-45bc-9b60-0cade42454c4 # Artists
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

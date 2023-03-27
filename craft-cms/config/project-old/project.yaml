@@ -1,0 +1,181 @@
+dateModified: 1678799073
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: singles
+      tableAttributes:
+        - link
+      type: native
+    -
+      heading: Listing
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:756de6fa-238d-45bc-9b60-0cade42454c4' # Artists
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      heading: Categories
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:31270e17-7e6b-4284-a863-d7d474e6a142' # Artist Title
+      tableAttributes:
+        - postDate
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:5cf99201-1ee3-43c4-b76d-fd3ed615a764' # Work Categories
+      tableAttributes:
+        - postDate
+      type: native
+email:
+  fromEmail: bhashkar007@gmail.com
+  fromName: branding-phi
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  uploads:
+    hasUrls: true
+    name: Uploads
+    settings:
+      path: '@webroot/uploads'
+    type: craft\fs\Local
+    url: '@web/uploads'
+meta:
+  __names__:
+    00a0b0b0-2f74-47e5-a48b-3f2dae5bda85: Home # Home
+    0d9f553d-f07c-437f-9371-da2bcad1ece7: Default # Default
+    0dda09bb-2943-4486-84ee-ebe52f6500f5: 'Public Schema' # Public Schema
+    1b985246-93fc-4374-9279-8639d6fedbfb: Work # Work
+    2aef4422-dc3a-477d-b70d-34b2ef30ff93: Video # Video
+    2cd79086-eabd-4086-b128-8127546aa0a9: General # General
+    2e89570b-7a3b-4588-b54a-8838796ec4a3: 'Artist Title' # Artist Title
+    4eef97f0-2748-4de1-a548-7a3bcdccddca: 'Left Menu' # Left Menu
+    5bf6c8d6-1d56-4236-9c1e-6e8d1dd45746: 'Right Image' # Right Image
+    5cf99201-1ee3-43c4-b76d-fd3ed615a764: 'Work Categories' # Work Categories
+    5ee3fda8-b5d2-4f4b-89f1-ab061651d2a9: Default # Default
+    6a6d7227-151f-40cd-a464-0926591db9b5: Common # Common
+    06f84e2e-5861-4873-9783-044038cdb595: Clients # Clients
+    7a6d0c27-b178-4815-9453-7ec6d55f60f8: 'Left Menu Entries' # Left Menu Entries
+    7bae7436-d3b4-48e2-b3d8-7e75e1373b09: 'Career Email' # Career Email
+    7bcca939-2498-44f6-ab0c-3abfee9615b5: Work # Work
+    7bcd074c-64c2-4ce3-bf5d-3c55df2c5210: Photo # Photo
+    7efc6662-7ca4-4659-98cb-84f0400b35e1: Default # Default
+    9a377add-f25e-48f7-a289-d5663ac62b3b: 'Facebook URL' # Facebook URL
+    14fe89fd-87eb-4ea6-99ad-3cbc18f17268: 'Artist Instagram Url' # Artist Instagram Url
+    18c050c1-3322-4536-950b-3a000d95e273: 'Project Type' # Project Type
+    22fda40d-cdb2-434e-bc40-a10529ba06fc: Bio # Bio
+    39fc98db-c162-46a2-a25c-7beec01a5a7a: 'Is Landscape?' # Is Landscape?
+    50a94a5b-5924-45a0-9f14-182d2ccc2730: 'Instagram URL' # Instagram URL
+    54bd9710-fbdf-42cd-a286-70dff9289e09: Default # Default
+    68b3e9be-5633-41f7-a403-96bfb5cd0e2a: 'Landing Pages' # Landing Pages
+    81c2666a-db8a-461e-878f-b5c136bd33fe: Category # Category
+    0227dd2d-3552-4a51-8919-0b05e87c68bc: Clients # Clients
+    652b2d5a-94dc-4054-b2a2-4e6c92f450a4: 'Right Menu Entries' # Right Menu Entries
+    756de6fa-238d-45bc-9b60-0cade42454c4: Artists # Artists
+    8522e99c-25d6-44f8-b6d8-7e07c4dcbd87: 'Case Studies' # Case Studies
+    31270e17-7e6b-4284-a863-d7d474e6a142: 'Artist Title' # Artist Title
+    041418b2-de26-4fce-b148-9268234e99d2: branding-phi # branding-phi
+    50239e4a-19b4-49fc-bcc4-5ca66ea3fb73: Image # Image
+    989905b9-eb5b-4bcb-815d-60d08fee093b: branding-phi # branding-phi
+    4298881e-59a0-4c76-83fc-b73e3cf88d1a: 'Work Listing' # Work Listing
+    05805777-cac0-478e-87bd-1701cbda3d1d: Landscape # Landscape
+    44942229-5420-4ee8-87c9-8dcb8e5e7bc6: 'Studio Email' # Studio Email
+    a4ad1143-e375-47e4-b2d7-df89060ca911: Artist # Artist
+    a4e13130-2b23-40dd-bd1a-0624c22b1cb3: Video # Video
+    a5da4fcb-febc-449f-b7dc-81427182756f: 'Client Logos' # Client Logos
+    ad5a2e50-3d5e-4a26-95e1-c6304fd8e836: 'Hero Image Mobile' # Hero Image Mobile
+    af759bd8-6a60-4604-972d-340dd196b9ce: 'Mobile Hero Video' # Mobile Hero Video
+    b19b8165-74e0-4864-86f1-904c0a6d6b17: Address # Address
+    b79a85d3-d5e0-49ee-b8ca-730f7dbffa99: 'Hero Video' # Hero Video
+    bb7b19ff-cb1b-45a0-9d34-dfda173ed2fb: 'RIght Menu' # RIght Menu
+    bde0d11b-0956-4e82-a8d7-a6ea1643030b: SEO # SEO
+    c054bb3f-4516-4f4d-8135-1e9431c443e1: 'Artist Contact Email' # Artist Contact Email
+    c3faba22-8b1e-4209-bca6-11b21de7639c: Default # Default
+    c8843fc4-26f6-497b-a618-09f595732e46: Clients # Clients
+    ca43a346-4af7-4020-b479-e916706f7e22: Home # Home
+    cc78163c-dff2-4b88-9ed0-7b35e1d8939f: Projects # Projects
+    cd2572e3-fdd2-482c-8457-7c30f7926815: Uploads # Uploads
+    da6d442b-456e-48c6-a31d-535b200936ea: 'Message URL' # Message URL
+    ebc8110b-a836-4fdf-86a5-a6b741c25130: Media # Media
+    ed6e1061-95c1-46b3-be88-acfa113518d6: 'Case Studies' # Case Studies
+    f6c8c9b3-a1b9-4085-bc58-84e304578340: Type # Type
+    fc45a24c-9f11-481e-b893-7cad649aa403: Image # Image
+    feea77ae-01ed-45ef-b994-a8a3a437f73e: About # About
+plugins:
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey: MQX05PS7SE1WR328YH2DAAY6
+    schemaVersion: 2.0.7
+  neo:
+    edition: standard
+    enabled: true
+    licenseKey: JEXERU6O3Q45RAICWWQ6WSSB
+    schemaVersion: 3.6.2
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  retcon:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seo:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.2.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: DZ0KT54O2VR5XP341IF6YFTD
+    schemaVersion: 3.0.11
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+system:
+  edition: pro
+  live: true
+  name: 'branding-phi '
+  retryDuration: null
+  schemaVersion: 4.0.0.9
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

@@ -1,0 +1,61 @@
+fieldLayouts:
+  c15b6ed9-d76e-4690-834f-6558082ec647:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 99934a54-67b9-4406-9132-0ed99bb9f5ce
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8741bb94-ec4f-4000-b933-ea1805f82e00
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bde0d11b-0956-4e82-a8d7-a6ea1643030b # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 69523bc0-eacd-41c7-a309-9e517bcbcec8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Seo
+        uid: 98157a68-e5ab-4772-89fd-c5f80eeabd8c
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 5cf99201-1ee3-43c4-b76d-fd3ed615a764 # Work Categories
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

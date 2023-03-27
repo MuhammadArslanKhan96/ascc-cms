@@ -1,0 +1,15 @@
+defaultPlacement: end
+enableVersioning: true
+handle: workCategories
+name: 'Work Categories'
+propagationMethod: all
+siteSettings:
+  041418b2-de26-4fce-b148-9268234e99d2: # branding-phi
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 5b553fa4-e093-42e2-bee0-876ab0a8de6a
+type: structure

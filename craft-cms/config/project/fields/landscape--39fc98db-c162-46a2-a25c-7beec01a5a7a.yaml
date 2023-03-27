@@ -1,0 +1,14 @@
+columnSuffix: erubesca
+contentColumnType: boolean
+fieldGroup: 6a6d7227-151f-40cd-a464-0926591db9b5 # Common
+handle: landscape
+instructions: null
+name: 'Is Landscape?'
+searchable: false
+settings:
+  default: false
+  offLabel: 'No'
+  onLabel: 'Yes'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

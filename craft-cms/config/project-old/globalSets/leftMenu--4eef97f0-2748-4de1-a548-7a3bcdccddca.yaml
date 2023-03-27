@@ -1,0 +1,24 @@
+fieldLayouts:
+  2e2e65a8-f044-43f1-b844-6514aada1fef:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7a6d0c27-b178-4815-9453-7ec6d55f60f8 # Left Menu Entries
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 13cbb5b0-38cf-4e83-b203-ec3adeacf046
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Left Menu'
+        uid: 4e715728-247d-4ef4-bf33-822b04201c9a
+        userCondition: null
+handle: leftMenu
+name: 'Left Menu'
+sortOrder: 2

@@ -1,0 +1,71 @@
+{
+  "name": "nystudio107/craft-seomatic",
+  "description": "SEOmatic facilitates modern SEO best practices & implementation for Craft CMS 3. It is a turnkey SEO system that is comprehensive, powerful, and flexible.",
+  "type": "craft-plugin",
+  "version": "4.0.20",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "seomatic",
+    "seo",
+    "json-ld",
+    "meta",
+    "tags",
+    "sitemap",
+    "twitter",
+    "facebook"
+  ],
+  "support": {
+    "docs": "https://nystudio107.com/docs/seomatic/",
+    "issues": "https://nystudio107.com/plugins/seomatic/support",
+    "source": "https://github.com/nystudio107/craft-seomatic"
+  },
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "nystudio107",
+      "homepage": "https://nystudio107.com"
+    }
+  ],
+  "require-dev": {
+    "codeception/codeception": "^4.1.29",
+    "codeception/module-asserts": "^1.3.1",
+    "codeception/module-datafactory": "^1.1.0",
+    "codeception/module-phpbrowser": "^1.0.2",
+    "codeception/module-rest": "^1.4.2",
+    "codeception/module-yii2": "^1.1.5",
+    "vlucas/phpdotenv": "^3.0"
+  },
+  "require": {
+    "php": "^8.0.2",
+    "craftcms/cms": "^4.0.0",
+    "nystudio107/craft-plugin-vite": "^4.0.7",
+    "nystudio107/craft-code-editor": "^1.0.0",
+    "php-science/textrank": "^1.0.3",
+    "davechild/textstatistics": "^1.0.3",
+    "sunra/php-simple-html-dom-parser": "^1.5.2"
+  },
+  "scripts": {
+    "test": "codecept run unit --coverage-xml"
+  },
+  "config": {
+    "allow-plugins": {
+      "craftcms/plugin-installer": true,
+      "yiisoft/yii2-composer": true
+    },
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "nystudio107\\seomatic\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "nystudio107\\seomatic\\Seomatic",
+    "handle": "seomatic",
+    "name": "SEOmatic"
+  }
+}

@@ -1,0 +1,43 @@
+fieldLayouts:
+  22f26175-3898-4808-be65-da882ec4de8f:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 0995106c-9e6f-4cf9-9fc4-c56a96aec96c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 89c8aa44-7782-45e4-af53-140153fcce8e
+        userCondition: null
+fs: caseStudiesVideo
+handle: caseStudiesVideo
+name: 'Carousel Video'
+sortOrder: 6
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

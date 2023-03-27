@@ -1,0 +1,67 @@
+fieldLayouts:
+  8a0c7813-ff08-4914-8466-4d9c4d42deb2:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 9a803a56-8f7b-4e42-9159-a69d39e4ab5f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 39fc98db-c162-46a2-a25c-7beec01a5a7a # Is Landscape?
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7917fd06-bdc0-4e8d-b0da-fadb3b63da5f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 18c050c1-3322-4536-950b-3a000d95e273 # Project Type
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 19e44477-f47f-415b-8df7-c529acd54a59
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ebc8e0c5-7a2a-454d-8361-3cc1900dcc51
+        userCondition: null
+fs: uploads
+handle: uploads
+name: Uploads
+sortOrder: 1
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

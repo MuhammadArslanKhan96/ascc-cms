@@ -1,0 +1,85 @@
+fieldLayouts:
+  e387db0b-114c-497e-864b-7a8a5cbcbfe3:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ceee4564-19e7-4f20-a744-cc4e7aa90bf6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: feea77ae-01ed-45ef-b994-a8a3a437f73e # About
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6ad0a299-5fcf-4108-b497-350e71426487
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 5bf6c8d6-1d56-4236-9c1e-6e8d1dd45746 # Right Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e323f128-b29c-44fb-99e0-ed59e2b3456e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8ce30a38-992e-40ac-85c2-81b42266d7a7
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bde0d11b-0956-4e82-a8d7-a6ea1643030b # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 76f35de4-0e26-4b3b-90e3-f4266a54e8ca
+            userCondition: null
+            warning: null
+            width: 100
+        name: Seo
+        uid: 3659b863-0ba4-42d4-921d-06c6c402d15e
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: ea2f0003-5768-49db-b21e-6d38b28ca7f3 # Landing Pages
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

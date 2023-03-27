@@ -1,0 +1,224 @@
+dateModified: 1679324933
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: singles
+      tableAttributes:
+        - link
+      type: native
+    -
+      heading: Listing
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:756de6fa-238d-45bc-9b60-0cade42454c4' # Artists
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      heading: Categories
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:31270e17-7e6b-4284-a863-d7d474e6a142' # Artist Title
+      tableAttributes:
+        - postDate
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:5cf99201-1ee3-43c4-b76d-fd3ed615a764' # Work Categories
+      tableAttributes:
+        - postDate
+      type: native
+email:
+  fromEmail: bhashkar007@gmail.com
+  fromName: branding-phi
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  caseStudiesImage:
+    hasUrls: true
+    name: 'Case Studies Image'
+    settings:
+      path: '@webroot/uploads/casestudiesimage'
+    type: craft\fs\Local
+    url: '@web/uploads/casestudiesimage'
+  caseStudiesVideo:
+    hasUrls: true
+    name: 'Case Studies Video'
+    settings:
+      path: '@webroot/uploads/casestudiesvideo'
+    type: craft\fs\Local
+    url: '@web/uploads/casestudiesvideo'
+  clientLogo:
+    hasUrls: true
+    name: 'Client Logo'
+    settings:
+      path: '@webroot/uploads/clients'
+    type: craft\fs\Local
+    url: '@web/uploads/clients'
+  heroImage:
+    hasUrls: true
+    name: 'Hero Image'
+    settings:
+      path: '@webroot/uploads/heroimage'
+    type: craft\fs\Local
+    url: '@web/uploads/heroimage'
+  menuImage:
+    hasUrls: true
+    name: 'Menu Image'
+    settings:
+      path: '@webroot/uploads/menuimage'
+    type: craft\fs\Local
+    url: '@web/uploads/menuimage'
+  profileImage:
+    hasUrls: true
+    name: 'Profile Image'
+    settings:
+      path: '@webroot/uploads/profileimage'
+    type: craft\fs\Local
+    url: '@web/uploads/profileimage'
+  uploads:
+    hasUrls: true
+    name: Uploads
+    settings:
+      path: '@webroot/uploads'
+    type: craft\fs\Local
+    url: '@web/uploads'
+  video:
+    hasUrls: true
+    name: Video
+    settings:
+      path: '@webroot/uploads/video'
+    type: craft\fs\Local
+    url: '@web/uploads/video'
+meta:
+  __names__:
+    00a0b0b0-2f74-47e5-a48b-3f2dae5bda85: Home # Home
+    0d9f553d-f07c-437f-9371-da2bcad1ece7: Default # Default
+    2a8e0ed3-39b9-40d9-ad96-f5ec128336ac: Video # Video
+    2aef4422-dc3a-477d-b70d-34b2ef30ff93: Video # Video
+    2cd79086-eabd-4086-b128-8127546aa0a9: General # General
+    2e89570b-7a3b-4588-b54a-8838796ec4a3: 'Artist Title' # Artist Title
+    4a80f006-3c7e-4149-9aa2-76c841c376eb: 'Clients Logo' # Clients Logo
+    5bf6c8d6-1d56-4236-9c1e-6e8d1dd45746: 'Right Image' # Right Image
+    5cf99201-1ee3-43c4-b76d-fd3ed615a764: 'Work Categories' # Work Categories
+    5ee3fda8-b5d2-4f4b-89f1-ab061651d2a9: Default # Default
+    6a6d7227-151f-40cd-a464-0926591db9b5: Common # Common
+    6c4d6a40-bd46-446b-a85d-38bbd8998689: 'Client Logos' # Client Logos
+    6cfc2aa8-a9db-4fa7-a040-008b79145b05: 'Work Listing' # Work Listing
+    7bae7436-d3b4-48e2-b3d8-7e75e1373b09: 'Career Email' # Career Email
+    7bcd074c-64c2-4ce3-bf5d-3c55df2c5210: Photo # Photo
+    9a5d8b40-1e97-4e86-a634-f371680d385d: Category # Category
+    9a377add-f25e-48f7-a289-d5663ac62b3b: 'Facebook URL' # Facebook URL
+    9e3f2b2c-53bd-4944-9585-4d87df1a81ca: 'Carousel Image' # Carousel Image
+    18c050c1-3322-4536-950b-3a000d95e273: 'Project Type' # Project Type
+    21ecc6e1-16f7-49aa-aaa5-e21e65c3fe99: 'Left Menu Entries' # Left Menu Entries
+    22fda40d-cdb2-434e-bc40-a10529ba06fc: Bio # Bio
+    39fc98db-c162-46a2-a25c-7beec01a5a7a: 'Is Landscape?' # Is Landscape?
+    50a94a5b-5924-45a0-9f14-182d2ccc2730: 'Instagram URL' # Instagram URL
+    60a62108-a7d5-4a7d-959f-87264388a217: 'Right Menu Entries' # Right Menu Entries
+    66c1ce7a-960f-4abe-a064-7210e148400c: 'Mobile Hero Video' # Mobile Hero Video
+    70ca80d1-bb24-45b8-9180-4003749e5f85: Default # Default
+    75e8dc9e-546b-49d2-8c73-22700ea21f90: Thumbnails # Thumbnails
+    89fa74f6-3530-4927-bb10-3f03fa5e3b35: Artist # Artist
+    0227dd2d-3552-4a51-8919-0b05e87c68bc: Clients # Clients
+    756de6fa-238d-45bc-9b60-0cade42454c4: Artists # Artists
+    856cfd5b-5f48-43a4-b99d-b9fc56027858: Image # Image
+    31270e17-7e6b-4284-a863-d7d474e6a142: 'Artist Title' # Artist Title
+    041418b2-de26-4fce-b148-9268234e99d2: branding-phi # branding-phi
+    47099fb2-e086-4b97-99db-0971186c26d3: Media # Media
+    50239e4a-19b4-49fc-bcc4-5ca66ea3fb73: Image # Image
+    087011b5-ebca-4639-8b06-839b7a82f250: 'Hero Video' # Hero Video
+    114444d1-d095-4e90-b52c-861f27ee25ae: 'Case Studies' # Case Studies
+    284848d9-87e0-4363-a895-fbbdc0bd057b: 'Carousel Video' # Carousel Video
+    332929d1-d62c-4dec-a7d7-42809e27716d: 'Artist Instagram Url' # Artist Instagram Url
+    753095be-236c-4703-90ec-4a879b3bccdc: Clients # Clients
+    989905b9-eb5b-4bcb-815d-60d08fee093b: branding-phi # branding-phi
+    05805777-cac0-478e-87bd-1701cbda3d1d: Landscape # Landscape
+    44942229-5420-4ee8-87c9-8dcb8e5e7bc6: 'Studio Email' # Studio Email
+    a4e13130-2b23-40dd-bd1a-0624c22b1cb3: Video # Video
+    aa3e8af0-cf0e-44ae-a4c7-08fe457d75e3: 'Case Studies' # Case Studies
+    abf70049-faeb-48b1-8ff5-defeab1580ce: 'Profile Image' # Profile Image
+    b19b8165-74e0-4864-86f1-904c0a6d6b17: Address # Address
+    b54c340c-eaa8-443a-9bf3-effd8769efdc: Work # Work
+    bde0d11b-0956-4e82-a8d7-a6ea1643030b: SEO # SEO
+    bf0ed4e5-904b-41ce-9bea-fe7177e87aad: Clients # Clients
+    c3faba22-8b1e-4209-bca6-11b21de7639c: Default # Default
+    ca43a346-4af7-4020-b479-e916706f7e22: Home # Home
+    cc78163c-dff2-4b88-9ed0-7b35e1d8939f: Projects # Projects
+    cca7aced-a03d-4b8b-9556-471bcfc13ce6: 'Hero Image Mobile' # Hero Image Mobile
+    cd2572e3-fdd2-482c-8457-7c30f7926815: Uploads # Uploads
+    d7be481d-99a2-40cf-ab05-a22ce0b044fd: Default # Default
+    d8f6fdf9-61d2-454a-a2a4-7b616ae02c01: 'Public Schema' # Public Schema
+    da6d442b-456e-48c6-a31d-535b200936ea: 'Message URL' # Message URL
+    e0356d46-8fe8-4302-917e-acc957afffa3: 'Menu Image' # Menu Image
+    e045473b-3714-4ef6-a01b-bd412bf750ec: Work # Work
+    e0981f4d-e17a-496c-b5eb-de30a26ceaf1: 'Artist Contact Email' # Artist Contact Email
+    e8d36a87-da9f-4704-a1e5-291943fd06b0: 'Left Menu' # Left Menu
+    ea2f0003-5768-49db-b21e-6d38b28ca7f3: 'Landing Pages' # Landing Pages
+    f6c8c9b3-a1b9-4085-bc58-84e304578340: Type # Type
+    f7959d60-27d9-4445-a274-4ff265bfa9e6: 'Artist Profile Image' # Artist Profile Image
+    f590679d-02a7-466b-a7b8-fa070ce46f24: 'RIght Menu' # RIght Menu
+    fa65f8e1-044e-4195-9a4a-72a862c1a3a8: Video # Video
+    fc45a24c-9f11-481e-b893-7cad649aa403: Image # Image
+    feea77ae-01ed-45ef-b994-a8a3a437f73e: About # About
+plugins:
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  retcon:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seo:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.2.0
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+system:
+  edition: pro
+  live: true
+  name: branding-phi
+  schemaVersion: 4.0.0.9
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

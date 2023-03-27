@@ -1,0 +1,94 @@
+fieldLayouts:
+  a2c54887-e9e1-47b9-a807-859243827eab:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: b19b8165-74e0-4864-86f1-904c0a6d6b17 # Address
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a3be3dbe-c8dd-466c-bdef-9ffdb6bcc630
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 759a02b7-da85-4a54-a4c7-cc1e7003db9e
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 44942229-5420-4ee8-87c9-8dcb8e5e7bc6 # Studio Email
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: afc021f5-6ffb-424b-80c9-09115794bd83
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 7bae7436-d3b4-48e2-b3d8-7e75e1373b09 # Career Email
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1c36406b-e645-43e2-82cf-8b692866d8e5
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 1ee6d41a-6504-43c8-a116-2adf8e68b7e6
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 9a377add-f25e-48f7-a289-d5663ac62b3b # Facebook URL
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c41455a2-3104-4fde-a6ca-7e27125824d3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 50a94a5b-5924-45a0-9f14-182d2ccc2730 # Instagram URL
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 62817a38-b385-442a-bacb-9ec3dbfad306
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: da6d442b-456e-48c6-a31d-535b200936ea # Message URL
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2898a3cf-f6c8-4930-9d61-247c7123b914
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d1987008-697f-4b28-b39f-c5893120df52
+        userCondition: null
+handle: general
+name: General
+sortOrder: 1

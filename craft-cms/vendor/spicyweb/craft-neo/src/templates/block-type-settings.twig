@@ -1,0 +1,240 @@
+{% import '_includes/forms' as forms %}
+
+{% set neoSettings = craft.app.plugins.getPlugin('neo').settings %}
+{% set blockTypeSortOrder = blockType ? blockType.sortOrder : '__NEOBLOCKTYPE_SORTORDER__' %}
+
+<div>
+    <input type="hidden" name="sortOrder" value="{{ blockTypeSortOrder }}" data-neo-bts="input.sortOrder">
+
+    <div>
+        {{ forms.textField({
+            id: 'name',
+            name: 'name',
+            label: 'Name'|t('neo'),
+            instructions: 'What this block type will be called in the CP.'|t('neo'),
+            required: true,
+            value: blockType ? blockType.name : null,
+            errors: blockType ? blockType.getErrors('name') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.name',
+            },
+        }) }}
+
+        {{ forms.textField({
+            id: 'handle',
+            name: 'handle',
+            label: 'Handle'|t('neo'),
+            instructions: 'How you’ll refer to this block type in the templates.'|t('neo'),
+            required: true,
+            class: 'code',
+            value: blockType ? blockType.handle : null,
+            errors: blockType ? blockType.getErrors('handle') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.handle'
+            }
+        }) }}
+
+        {{ forms.textareaField({
+            id: 'description',
+            name: 'description',
+            label: 'Description'|t('neo'),
+            value: blockType ? blockType.description : null,
+            errors: blockType ? blockType.getErrors('description') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.description'
+            }
+        }) }}
+
+        {% if neoSettings.newBlockMenuStyle != 'classic' %}
+            {{ forms.elementSelectField({
+                id: 'iconId',
+                name: 'iconId',
+                label: 'Icon'|t('neo'),
+                instructions: 'The SVG icon to use for this block type.'|t('neo'),
+                value: blockType ? [blockType.iconId] : null,
+                errors: blockType ? blockType.getErrors('iconId') : null,
+                elements: blockType and blockType.iconId ? [blockType.icon] : null,
+                elementType: 'craft\\elements\\Asset',
+                single: true,
+                viewMode: 'large',
+                sources: neoSettings.blockTypeIconSources,
+                criteria: {
+                    kind: 'image',
+                    filename: '*.svg',
+                },
+                containerAttributes: {
+                    'data-neo-bts': 'container.iconId'
+                },
+            }) }}
+        {% else %}
+            <input type="hidden" name="iconId" value="{{ blockType ? blockType.iconId : '' }}">
+        {% endif %}
+
+        <div data-neo-bts="container.enabled">
+            {{ forms.lightswitchField({
+                id: 'enabled',
+                name: 'enabled',
+                label: 'Enabled'|t('neo'),
+                instructions: 'Whether this block type is allowed to be used.'|t('neo'),
+                on: blockType ? blockType.enabled : true,
+                containerAttributes: {
+                    'data-neo-bts': 'input.enabled'
+                }
+            }) }}
+        </div>
+        
+        {{ forms.textField({
+            type: 'number',
+            id: 'minBlocks',
+            name: 'minBlocks',
+            label: 'Min Blocks'|t('neo'),
+            instructions: 'The minimum number of blocks of this type the field is allowed to have.'|t('neo'),
+            size: 3,
+            value: blockType and blockType.minBlocks ? blockType.minBlocks : null,
+            errors: blockType ? blockType.getErrors('minBlocks') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.minBlocks'
+            }
+        }) }}
+
+        {{ forms.textField({
+            type: 'number',
+            id: 'maxBlocks',
+            name: 'maxBlocks',
+            label: 'Max Blocks'|t('neo'),
+            instructions: 'The maximum number of blocks of this type the field is allowed to have.'|t('neo'),
+            size: 3,
+            value: blockType and blockType.maxBlocks ? blockType.maxBlocks : null,
+            errors: blockType ? blockType.getErrors('maxBlocks') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.maxBlocks'
+            }
+        }) }}
+
+        {{ forms.textField({
+            type: 'number',
+            id: 'minSiblingBlocks',
+            name: 'minSiblingBlocks',
+            label: 'Min Sibling Blocks of This Type'|t('neo'),
+            instructions: 'The minimum number of blocks of this type allowed under one parent block or at the top level.'|t('neo'),
+            size: 3,
+            value: blockType and blockType.minSiblingBlocks ? blockType.minSiblingBlocks : null,
+            errors: blockType ? blockType.getErrors('minSiblingBlocks') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.minSiblingBlocks'
+            }
+        }) }}
+
+        {{ forms.textField({
+            type: 'number',
+            id: 'maxSiblingBlocks',
+            name: 'maxSiblingBlocks',
+            label: 'Max Sibling Blocks of This Type'|t('neo'),
+            instructions: 'The maximum number of blocks of this type allowed under one parent block or at the top level.'|t('neo'),
+            size: 3,
+            value: blockType and blockType.maxSiblingBlocks ? blockType.maxSiblingBlocks : null,
+            errors: blockType ? blockType.getErrors('maxSiblingBlocks') : null,
+            inputAttributes: {
+                'data-neo-bts': 'input.maxSiblingBlocks'
+            }
+        }) }}
+
+        {% set childBlocksInput %}
+            <div class="checkbox-select" data-neo-bts="input.childBlocks">
+                <div>
+                    <input type="hidden" name="childBlocks">
+                    <input type="checkbox" value="*" id="childBlocks" class="all checkbox" name="childBlocks">
+                    <label for="childBlocks"><strong>{{ 'All'|t('neo') }}</strong></label>
+                </div>
+                <div data-neo-bts="container.childBlocks"></div>
+            </div>
+        {% endset %}
+        {{ forms.field({
+            id: 'childBlocks',
+            label: 'Child Blocks'|t('neo'),
+            instructions: 'Which block types do you want to allow as children?'|t('neo'),
+        }, childBlocksInput) }}
+
+        <div data-neo-bts="container.minChildBlocks">
+            {{ forms.textField({
+                type: 'number',
+                id: 'minChildBlocks',
+                name: 'minChildBlocks',
+                label: 'Min Child Blocks'|t('neo'),
+                instructions: 'The minimum number of child blocks this block type is allowed to have.'|t('neo'),
+                size: 3,
+                value: blockType and blockType.minChildBlocks ? blockType.minChildBlocks : null,
+                errors: blockType ? blockType.getErrors('minChildBlocks') : null,
+                inputAttributes: {
+                    'data-neo-bts': 'input.minChildBlocks'
+                }
+            }) }}
+        </div>
+
+        <div data-neo-bts="container.maxChildBlocks">
+            {{ forms.textField({
+                type: 'number',
+                id: 'maxChildBlocks',
+                name: 'maxChildBlocks',
+                label: 'Max Child Blocks'|t('neo'),
+                instructions: 'The maximum number of child blocks this block type is allowed to have.'|t('neo'),
+                size: 3,
+                value: blockType and blockType.maxChildBlocks ? blockType.maxChildBlocks : null,
+                errors: blockType ? blockType.getErrors('maxChildBlocks') : null,
+                inputAttributes: {
+                    'data-neo-bts': 'input.maxChildBlocks'
+                }
+            }) }}
+        </div>
+
+        <div data-neo-bts="container.groupChildBlockTypes">
+            {{ forms.lightswitchField({
+                id: 'groupChildBlockTypes',
+                name: 'groupChildBlockTypes',
+                label: 'Group Child Block Types'|t('neo'),
+                instructions: 'Will child block types be shown in their groups?'|t('neo'),
+                on: blockType ? blockType.groupChildBlockTypes : true,
+                containerAttributes: {
+                    'data-neo-bts': 'input.groupChildBlockTypes'
+                }
+            }) }}
+        </div>
+
+        <div data-neo-bts="container.topLevel">
+            {{ forms.lightswitchField({
+                id: 'topLevel',
+                name: 'topLevel',
+                label: 'Top Level'|t('neo'),
+                instructions: 'Will this block type be allowed at the top level?'|t('neo'),
+                on: blockType ? blockType.topLevel : true,
+                containerAttributes: {
+                    'data-neo-bts': 'input.topLevel'
+                }
+            }) }}
+        </div>
+
+        <hr>
+
+        <a class="fieldtoggle" data-target="advanced">{{ "Advanced"|t('app') }}</a>
+        <div id="advanced" class="hidden">
+            <div data-neo-bts="container.ignorePermissions">
+                {{ forms.lightswitchField({
+                    id: 'ignorePermissions',
+                    name: 'ignorePermissions',
+                    label: 'Ignore Permissions'|t('neo'),
+                    instructions: 'Whether user permissions for this block type should be ignored.'|t('neo'),
+                    on: blockType ? blockType.ignorePermissions : true,
+                    containerAttributes: {
+                        'data-neo-bts': 'input.ignorePermissions'
+                    }
+                }) }}
+            </div>
+
+            {% for condition in conditions %}
+                {{ condition|raw }}
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <a class="error delete" data-neo-bts="button.delete">{{ 'Delete block type'|t('neo') }}</a>
+</div>

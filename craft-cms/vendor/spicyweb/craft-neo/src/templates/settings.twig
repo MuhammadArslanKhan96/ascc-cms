@@ -1,0 +1,143 @@
+{% import '_includes/forms' as forms %}
+
+{% set configurator %}
+<div class="nc_sidebar" data-neo="container.sidebar">
+    <div class="nc_sidebar_title">{{ 'Block Types'|t('neo') }}</div>
+    <div class="nc_sidebar_list" data-neo="container.blockTypes"></div>
+    <div class="nc_sidebar_buttons btngroup">
+        <a class="btn add icon" role="button" data-neo="button.blockType">{{ 'Block type'|t('neo') }}</a>
+        <a class="btn type-heading" role="button" data-neo="button.group">{{ 'Group'|t('neo') }}</a>
+    </div>
+</div>
+<div class="nc_main" data-neo="container.main">
+    <div class="nc_main_tabs">
+        <a class="nc_main_tabs_tab is-selected" role="button" data-neo="button.settings">{{ 'Settings'|t('neo') }}</a>
+        <a class="nc_main_tabs_tab" role="button" data-neo="button.fieldLayout">{{ 'Field Layout'|t('neo') }}</a>
+    </div>
+    <div class="nc_main_content" data-neo="container.settings"></div>
+    <div class="nc_main_content" data-neo="container.fieldLayout"></div>
+</div>
+{% endset %}
+
+<div id="neo-configurator" class="neo-configurator">
+    {{ forms.field({
+        label: "Configuration"|t('neo'),
+        instructions: "Define the types of blocks that can be created within this Neo field, as well as the fields each block type is made up of."|t('neo'),
+        name: 'config',
+        errors: neoField.getErrors('blockTypes'),
+    }, configurator) }}
+</div>
+
+{% if craft.app.getIsMultiSite() %}
+    {{ forms.selectField({
+        label: 'Propagation Method' | t('neo'),
+        instructions: 'Which sites should blocks be saved to?' | t('neo'),
+        id: 'propagationMethod',
+        name: 'propagationMethod',
+        options: [
+            { value: 'none', label: 'Only save blocks to the site they were created in' | t('neo') },
+            { value: 'siteGroup', label: 'Save blocks to other sites in the same site group' | t('neo') },
+            { value: 'language', label: 'Save blocks to other sites with the same language' | t('neo') },
+            { value: 'all', label: 'Save blocks to all sites the owner element is saved in' | t('neo') },
+            { value: 'custom', label: 'Custom…'|t('app') },
+        ],
+        value: neoField.propagationMethod,
+        toggle: true,
+        targetPrefix: 'propagation-method-',
+    }) }}
+
+    {% tag 'div' with {
+        id: 'propagation-method-custom',
+        class: neoField.propagationMethod != 'custom' ? 'hidden' : null,
+    } %}
+        {{ forms.textField({
+            label: 'Propagation Key Format'|t('app'),
+            instructions: 'Template that defines the field’s custom “propagation key” format. Blocks will be saved to all sites that produce the same key.'|t('app'),
+            id: 'propagation-key-format',
+            class: 'code',
+            name: 'propagationKeyFormat',
+            value: neoField.propagationKeyFormat,
+            errors: neoField.getErrors('propagationKeyFormat'),
+        }) }}
+    {% endtag %}
+
+    {% if neoField.id and neoField.propagationMethod != 'none' %}
+        {% js %}
+            (function() {
+                var showingWarning = false;
+                $("#{{ 'propagationMethod'|namespaceInputId }}").on('change', function() {
+                    if ($(this).val() !== '{{ neoField.propagationMethod }}') {
+                        if (!showingWarning) {
+                            $('<p/>', {'class': 'warning', text: "{{ 'Applying this change to existing blocks can take some time.'|t('app')|e('js') }}"})
+                                .appendTo($("#{{ 'propagationMethod-field'|namespaceInputId }}"));
+                            showingWarning = true;
+                        }
+                    } else if (showingWarning) {
+                        $("#{{ 'propagationMethod-field'|namespaceInputId }} .warning").remove();
+                        showingWarning = false;
+                    }
+                });
+            })();
+        {% endjs %}
+    {% endif %}
+{% endif %}
+
+{{ forms.textField({
+    label: "Min Blocks"|t('neo'),
+    instructions: "The minimum number of blocks the field must have."|t('neo'),
+    id: 'minBlocks',
+    name: 'minBlocks',
+    value: neoField.minBlocks,
+    size: 3,
+    errors: neoField.getErrors('minBlocks'),
+}) }}
+
+{{ forms.textField({
+    label: "Max Blocks"|t('neo'),
+    instructions: "The maximum number of blocks the field is allowed to have."|t('neo'),
+    id: 'maxBlocks',
+    name: 'maxBlocks',
+    value: neoField.maxBlocks,
+    size: 3,
+    errors: neoField.getErrors('maxBlocks'),
+}) }}
+
+{{ forms.textField({
+    label: "Min Top-Level Blocks"|t('neo'),
+    instructions: "The minimum number of top-level blocks the field must have."|t('neo'),
+    id: 'minTopBlocks',
+    name: 'minTopBlocks',
+    value: neoField.minTopBlocks,
+    size: 3,
+    errors: neoField.getErrors('minTopBlocks'),
+}) }}
+
+{{ forms.textField({
+    label: "Max Top-Level Blocks"|t('neo'),
+    instructions: "The maximum number of top-level blocks the field is allowed to have."|t('neo'),
+    id: 'maxTopBlocks',
+    name: 'maxTopBlocks',
+    value: neoField.maxTopBlocks,
+    size: 3,
+    errors: neoField.getErrors('maxTopBlocks'),
+}) }}
+
+{{ forms.textField({
+    label: "Min Levels"|t('neo'),
+    instructions: "The minimum number of levels that blocks in this field can be nested."|t('neo'),
+    id: 'minLevels',
+    name: 'minLevels',
+    value: neoField.minLevels,
+    size: 3,
+    errors: neoField.getErrors('minLevels'),
+}) }}
+
+{{ forms.textField({
+    label: "Max Levels"|t('app'),
+    instructions: "The maximum number of levels that blocks in this field can be nested."|t('neo'),
+    id: 'maxLevels',
+    name: 'maxLevels',
+    value: neoField.maxLevels,
+    size: 3,
+    errors: neoField.getErrors('maxLevels'),
+}) }}

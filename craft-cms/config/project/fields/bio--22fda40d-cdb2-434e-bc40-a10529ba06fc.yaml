@@ -1,0 +1,19 @@
+columnSuffix: buietgmx
+contentColumnType: text
+fieldGroup: 6a6d7227-151f-40cd-a464-0926591db9b5 # Common
+handle: bio
+instructions: null
+name: Bio
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,85 @@
+fieldLayouts:
+  34bb3496-055f-4c20-bcf7-d5a9b2322cbc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: Name
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: c13ae9f2-d6d0-492b-893c-a0ee038d033a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b79a85d3-d5e0-49ee-b8ca-730f7dbffa99 # Hero Video
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7b9e8a5d-8802-4f98-a5c2-cc813eed58f8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: af759bd8-6a60-4604-972d-340dd196b9ce # Mobile Hero Video
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9e6d84a7-db15-43de-ac68-c5a4036b5638
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 1f18a0f4-0084-48dc-958b-6be529ae5a7f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bde0d11b-0956-4e82-a8d7-a6ea1643030b # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a7042170-2481-406f-87f9-2e1797c37168
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 4808d3e9-47ae-4725-9ee1-19425ab7c62f
+        userCondition: null
+handle: home
+hasTitleField: true
+name: Home
+section: 00a0b0b0-2f74-47e5-a48b-3f2dae5bda85 # Home
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

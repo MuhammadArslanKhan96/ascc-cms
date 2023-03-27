@@ -1,0 +1,14 @@
+columnSuffix: bzpsoiop
+contentColumnType: string(255)
+fieldGroup: 6a6d7227-151f-40cd-a464-0926591db9b5 # Common
+handle: artistContactEmail
+instructions: null
+name: 'Artist Contact Email'
+searchable: false
+settings:
+  maxLength: 255
+  types:
+    - email
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url
